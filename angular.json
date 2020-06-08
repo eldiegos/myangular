@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-ang-app"
+    }
+  },
+  "defaultProject": "my-ang-app",
+  "cli": {
+    "analytics": false
+  }
 }

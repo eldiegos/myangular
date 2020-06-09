@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     let mypost = JSON.stringify(this.loginPost);
     console.log(mypost);
 
-    this.http.post("https://reqres.in/api/login", mypost)
+    this.http.post("https://reqres.in/api/login", this.loginPost)
       .subscribe(
         (val) => {
           console.log("POST call successful value returned in body", val);

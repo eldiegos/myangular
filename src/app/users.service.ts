@@ -12,15 +12,11 @@ export class UsersService {
 
   urlUsers: string;
 
-
-
   listUsers(): Observable<User[]> {
 
     this.urlUsers = "https://reqres.in/api/users";
 
     return this.http.get<User[]>(this.urlUsers);
   }
-
-
 
 }

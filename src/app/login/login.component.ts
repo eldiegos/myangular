@@ -28,10 +28,11 @@ export class LoginComponent implements OnInit {
     let token: string;
 
     token = this.loginService.doRestLogin(this.email, this.password);
-    console.log(token);
+    
     if(token!=null && token.trim.length!=0){
 
-      this.router.navigate(['/users']);
+      console.log(token);
+      this.router.navigate(['users']);
 
     }
 

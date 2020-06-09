@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserLoginPost } from '../model/UserLoginPost';
-import { HttpClient } from "@angular/common/http";
+import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,39 +13,34 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  loginPost: UserLoginPost;
 
-  constructor(private http: HttpClient) {
-
-    this.loginPost = new UserLoginPost();
-
+  constructor(private loginService: LoginService, private router: Router) {
   }
 
   ngOnInit(): void {
-  }
 
+    this.email = "eve.holt@reqres.in";
+    this.password = "cityslicka";
+  }
 
   doLogin() {
 
-    this.loginPost.email = this.email;
-    this.loginPost.password = this.password;
+    let token: string;
 
+    token = this.loginService.doRestLogin(this.email, this.password);
+    console.log(token);
+    if(token!=null && token.trim.length!=0){
 
-    let mypost = JSON.stringify(this.loginPost);
-    console.log(mypost);
+      this.router.navigate(['/users']);
 
-    this.http.post("https://reqres.in/api/login", this.loginPost)
-      .subscribe(
-        (val) => {
-          console.log("POST call successful value returned in body", val);
-        },
-        response => {
-          console.log("POST call in error", response);
-        },
-        () => {
-          console.log("The POST observable is now completed.");
-        });
+    }
+
+    else {
+      this.router.navigate(['/']);
+    }
+
   }
 
 
+ 
 }

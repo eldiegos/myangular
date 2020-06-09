@@ -8,19 +8,23 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserlistComponent } from './userlist/userlist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

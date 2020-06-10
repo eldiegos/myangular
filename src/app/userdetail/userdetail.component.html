@@ -9,13 +9,21 @@
     <div class="form-group">
 
         <label for="formName">Name</label>
-        <input type="text" class="form-control" id="formName" name="user.first_name" [(ngModel)]="user.first_name">
+        <input type="text" readonly class="form-control" id="formName" name="user.first_name" [(ngModel)]="user.first_name">
 
         <label for="formSurname">Surname</label>
-        <input type="text" class="form-control" id="formSurname" name="user.last_name" [(ngModel)]="user.last_name">
+        <input type="text" readonly class="form-control" id="formSurname" name="user.last_name" [(ngModel)]="user.last_name">
 
         <label for="formEmail">Email address</label>
-        <input type="email" class="form-control" id="formEmail" name="user.email" [(ngModel)]="user.email">
+        <input type="email" readonly class="form-control" id="formEmail" name="user.email" [(ngModel)]="user.email">
+
+        <br />
+
+        <label for="formJob">Job</label>
+        <input type="text" class="form-control" id="formJob" name="job" [(ngModel)]="job">
+
+        <label for="formAlias">Alias</label>
+        <input type="text" class="form-control" id="formAlias" name="alias" [(ngModel)]="alias">
 
         <br />
 

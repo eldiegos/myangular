@@ -37,7 +37,8 @@ export class UsersService {
   deleteUser(user: User) {
 
     let urlUser = "https://reqres.in/api/users/" + user.id;
-    return this.http.delete<void>(urlUser);
+    
+    return this.http.delete<void>(urlUser, {observe : 'response'});
 
   }
 

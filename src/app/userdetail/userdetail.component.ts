@@ -60,10 +60,9 @@ export class UserdetailComponent implements OnInit {
   doDelete() {
 
     this.userService.deleteUser(this.user)
-      .subscribe(
-
-        //¿que va aquí?
-      );
+      .subscribe(data => { 
+        console.log(data.status);
+      });
 
   }
 

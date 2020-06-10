@@ -12,21 +12,26 @@ export class LoginService {
   loginPost: UserLoginPost;
   token: string;
 
-  doRestLogin(email: string, password: string)  {
+  doRestLogin(email: string, password: string) {
 
-    
 
     this.loginPost = new UserLoginPost();
 
     this.loginPost.email = email;
     this.loginPost.password = password;
 
-    
-
     return this.http.post("https://reqres.in/api/login", this.loginPost);
-     
-      
+
   }
 
+  isSessionActive(): boolean {
+
+    let email = sessionStorage.getItem("loginAPP");
+    return (email != undefined && email != null);
+  }
+
+  doCloseSession() {
+    sessionStorage.removeItem("loginAPP");
+  }
 
 }

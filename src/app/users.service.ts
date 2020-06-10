@@ -10,13 +10,34 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  urlUsers: string;
 
   listUsers(): Observable<User[]> {
 
-    this.urlUsers = "https://reqres.in/api/users";
+    let urlUsers = "https://reqres.in/api/users";
 
-    return this.http.get<User[]>(this.urlUsers);
+    return this.http.get<User[]>(urlUsers);
+  }
+
+  getUser(id: number): Observable<User> {
+
+    let urlUser = "https://reqres.in/api/users/" + id;
+    return this.http.get<User>(urlUser);
+
+  }
+
+
+  updateUser(user: User): Observable<User> {
+
+    let urlUser = "https://reqres.in/api/users/" + user.id;
+    return this.http.put<User>(urlUser, user);
+
+  }
+
+  deleteUser(user: User) {
+
+    let urlUser = "https://reqres.in/api/users/" + user.id;
+    return this.http.delete<void>(urlUser);
+
   }
 
 }

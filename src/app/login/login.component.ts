@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           if (token != null) {
 
             console.log(token);
-            sessionStorage.setItem(this.email, token);
+            sessionStorage.setItem("loginAPP", this.email);
             this.router.navigate(['users']);
 
           }

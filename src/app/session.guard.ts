@@ -9,7 +9,15 @@ export class SessionGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return this.checkIfLoggedIn();
   }
+
+  private checkIfLoggedIn(): boolean {
+
+    let email = sessionStorage.getItem("loginAPP");
+    return (email!=undefined && email!=null);
+
+  }
+
   
 }

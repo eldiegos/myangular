@@ -27,21 +27,41 @@ export class LoginComponent implements OnInit {
 
     let token: string;
 
-    token = this.loginService.doRestLogin(this.email, this.password);
-    
-    if(token!=null && token.trim.length!=0){
+    this.loginService.doRestLogin(this.email, this.password)
+      .subscribe(
+        (data) => {
+          console.log("POST call successful value returned in body", JSON.stringify(data));
+          var obj = JSON.parse(JSON.stringify(data));
+          token = obj.token;
 
-      console.log(token);
-      this.router.navigate(['users']);
+          if (token != null) {
 
-    }
+            console.log(token);
+            sessionStorage.setItem(this.email, token);
+            this.router.navigate(['users']);
 
-    else {
-      this.router.navigate(['/']);
-    }
+          }
+
+          else {
+            this.router.navigate(['/']);
+          }
+
+        },
+
+        response => {
+          console.log("POST call in error", response);
+          this.router.navigate(['/']);
+        },
+
+        () => {
+          console.log("The POST observable is now completed.");
+        });
+
+
+
 
   }
 
 
- 
+
 }

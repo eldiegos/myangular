@@ -12,7 +12,7 @@ export class LoginService {
   loginPost: UserLoginPost;
   token: string;
 
-  doRestLogin(email: string, password: string) : any {
+  doRestLogin(email: string, password: string)  {
 
     
 
@@ -23,21 +23,8 @@ export class LoginService {
 
     
 
-    this.http.post("https://reqres.in/api/login", this.loginPost)
-      .subscribe(
-        (val) => {
-          console.log("POST call successful value returned in body", JSON.stringify(val));
-          var obj = JSON.parse(JSON.stringify(val));
-          this.token = obj.token;
-          return this.token;
-        },
-        response => {
-          console.log("POST call in error", response);
-        },
-        () => {
-          console.log("The POST observable is now completed.");
-        });
-
+    return this.http.post("https://reqres.in/api/login", this.loginPost);
+     
       
   }
 
